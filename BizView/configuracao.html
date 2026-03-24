@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Configurações • Biz View</title>
+  <link rel="stylesheet" href="configuracao.css" />
+</head>
+<body>
+  <main class="settings-page">
+
+    <!-- referência visual (sua imagem enviada) -->
+    <!-- Reference image: /mnt/data/9298d472-cbb2-4aff-8d7e-71f6d218484e.png -->
+    <img src="/mnt/data/9298d472-cbb2-4aff-8d7e-71f6d218484e.png"
+         alt="Referência visual - Configurações"
+         class="reference-mock" aria-hidden="true" />
+
+    <header class="header">
+      <div class="brand">
+        <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path fill="#2e6fe8" d="M3 18h3V7H3v11zm5 0h3V3H8v15zm5 0h3v-9h-3v9zm5 0h3v-4h-3v4z"/>
+        </svg>
+        <h1>Configurações</h1>
+      </div>
+    </header>
+
+    <nav class="settings-list" aria-label="Menu de configurações">
+      <a class="menu-item" href="acesso.html" role="button">
+        <span class="mi-left">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4.97 0-9 2.686-9 6v2h18v-2c0-3.314-4.03-6-9-6z"/></svg>
+        </span>
+        <span class="mi-label">Conta</span>
+        <span class="mi-chev" aria-hidden="true">›</span>
+      </a>
+
+      <a class="menu-item" href="notificacoes.html" role="button">
+        <span class="mi-left"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 24a2.5 2.5 0 0 0 2.45-2H9.55A2.5 2.5 0 0 0 12 24zm6.36-6v-5c0-3.07-1.64-5.64-4.5-6.32V5a1.86 1.86 0 1 0-3.72 0v1.68C7.28 7.36 5.64 9.92 5.64 13v5l-1.64 1.36A1 1 0 0 0 5 21h14a1 1 0 0 0 .99-1.64L18.36 18z"/></svg></span>
+        <span class="mi-label">Notificações</span>
+        <span class="mi-chev" aria-hidden="true">›</span>
+      </a>
+
+      <a class="menu-item" href="gerenciamento.html" role="button">
+        <span class="mi-left"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M3 13h18v-2H3v2zm0 6h18v-2H3v2zM3 7v2h18V7H3z"/></svg></span>
+        <span class="mi-label">Gerenciar Dados</span>
+        <span class="mi-chev" aria-hidden="true">›</span>
+      </a>
+
+      <a class="menu-item active" href="sobre.html" role="button" aria-current="page">
+        <span class="mi-left"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M3 13h3v8H3v-8zm5-8h8v16H8V5zm10 0h3v16h-3V5z"/></svg></span>
+        <span class="mi-label">Empresa</span>
+        <span class="mi-chev" aria-hidden="true">›</span>
+      </a>
+    </nav>
+
+    <!-- bottom navigation moved INSIDE the white card -->
+    <nav class="bottom-nav-inside" aria-label="Navegação principal">
+      <a class="bn-item" href="dashboard.html" aria-label="Dashboard">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M3 13h8V3H3v10zm10 8h8V3h-8v18zM3 21h8v-6H3v6zM13 13h8v-4h-8v4z"/></svg>
+      </a>
+      <a class="bn-item" href="relatorio.html" aria-label="Relatórios">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 8h14v-2H7v2zm0-4h14v-2H7v2zm0-6v2h14V7H7z"/></svg>
+      </a>
+      <a class="bn-item" href="equipe.html" aria-label="Equipe">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zM8 11c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm8 2c-2.33 0-7 1.17-7 3.5V20h14v-3.5c0-2.33-4.67-3.5-7-3.5zM8 13c-2.67 0-8 1.34-8 4v3h8v-3c0-1 .5-2 1.5-2.5.5-.25 1-.5 1.5-.5z"/></svg>
+      </a>
+      <a class="bn-item active" href="configuracao.html" aria-label="Configurações" aria-current="page">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M19.14 12.936c.036-.3.056-.604.056-.936s-.02-.636-.056-.936l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.6-.22l-2.39.96a7.07 7.07 0 0 0-1.62-.94l-.36-2.54a.5.5 0 0 0-.5-.42h-3.84a.5.5 0 0 0-.5.42l-.36 2.54c-.57.22-1.1.5-1.62.94l-2.39-.96a.5.5 0 0 0-.6.22L2.7 8.5a.5.5 0 0 0 .12.64l2.03 1.58c-.04.3-.06.62-.06.94s.02.64.06.94l-2.03 1.58a.5.5 0 0 0-.12.64l1.92 3.32c.13.22.4.3.6.22l2.39-.96c.5.45 1.05.82 1.62.94l.36 2.54c.05.28.28.42.5.42h3.84c.22 0 .45-.14.5-.42l.36-2.54c.57-.22 1.11-.5 1.62-.94l2.39.96c.2.08.47 0 .6-.22l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.58zM12 15.5A3.5 3.5 0 1 1 12 8.5a3.5 3.5 0 0 1 0 7z"/></svg>
+      </a>
+    </nav>
+
+  </main>
+</body>
+</html>

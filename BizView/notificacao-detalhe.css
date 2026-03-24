@@ -1,0 +1,147 @@
+/* notificacao-detalhe.css — mobile-first */
+
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+
+body {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  background: linear-gradient(135deg, #5393f1, #9bc9ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* card principal */
+.page {
+  width: 100%;
+  max-width: 440px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 22px 48px rgba(0,0,0,0.14);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+
+  animation: fadeIn .55s ease;
+}
+
+/* header */
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.back {
+  color: #333;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 16px;
+}
+.back:hover { color: #2e6fe8; }
+
+.title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  margin-left: 4px;
+}
+
+.brand-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.card-header h1 {
+  margin: 0;
+  color: #2e6fe8;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+/* conteúdo do "e-mail" */
+.mail-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #f5f7fb;
+}
+
+.mail-row {
+  display: flex;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.mail-label {
+  font-weight: 700;
+  color: #6b8bd6;
+  min-width: 70px;
+}
+
+.mail-value {
+  color: #0f0f0f;
+  font-weight: 500;
+}
+
+.mail-subject {
+  font-size: 15px;
+  margin-top: 6px;
+}
+
+/* corpo da mensagem */
+.mail-body {
+  margin-top: 4px;
+  padding: 10px 2px 2px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.mail-body p {
+  margin: 0 0 8px 0;
+}
+
+.mail-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* rodapé simples */
+.mail-footer {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #9a9a9a;
+}
+
+/* foco acessível */
+a:focus-visible {
+  outline: 3px solid rgba(83,147,241,0.18);
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
+/* responsivo */
+@media (max-width: 360px) {
+  .card { padding: 14px; }
+  .card-header h1 { font-size: 16px; }
+}
+
+@media (min-width: 600px) {
+  .card { padding: 22px; border-radius: 18px; }
+}
+
+/* animação */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Redefinição de Senha • Biz View</title>
+    <link rel="stylesheet" href="redefinir.css" />
+  </head>
+
+  <body>
+    <main class="reset-container" role="main">
+      <nav class="back" aria-label="Navegação">
+        <a href="login.html" class="back-link" aria-label="Voltar para login">← Voltar</a>
+      </nav>
+
+      <header class="heading" aria-labelledby="titulo-redefinir">
+        <h1 id="titulo-redefinir">Redefinição de<br /><span>Senha</span></h1>
+        <p class="sub">Insira o e-mail da sua conta para receber o link de recuperação.</p>
+      </header>
+
+      <form id="resetForm" class="reset-form" action="criar_entrar.html" method="get" novalidate>
+        <label for="email" class="sr-only">E-mail</label>
+
+        <div class="input-group">
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="E-mail"
+            required
+            autocomplete="email"
+            inputmode="email"
+            aria-describedby="email-help email-error"
+            aria-invalid="false"
+          />
+          <div id="email-help" class="hint">Enviaremos um link para este e-mail.</div>
+          <div id="email-error" class="error-msg" role="status" aria-live="polite"></div>
+        </div>
+
+        <button type="submit" class="btn-primary">Enviar link de recuperação</button>
+      </form>
+    </main>
+
+    <script>
+      (function () {
+        const form = document.getElementById('resetForm');
+        const email = document.getElementById('email');
+        const emailError = document.getElementById('email-error');
+
+        function showError(message) {
+          emailError.textContent = message;
+          email.setAttribute('aria-invalid', 'true');
+        }
+        function clearError() {
+          emailError.textContent = '';
+          email.setAttribute('aria-invalid', 'false');
+        }
+
+        form.addEventListener('submit', function (e) {
+          // Usa validação nativa e impedimos submissão se inválido
+          if (!email.checkValidity()) {
+            e.preventDefault();
+            if (email.validity.valueMissing) {
+              showError('Informe seu e-mail.');
+            } else if (email.validity.typeMismatch) {
+              showError('Por favor, informe um e-mail válido.');
+            } else {
+              showError('E-mail inválido.');
+            }
+            email.focus();
+            return;
+          }
+
+          // opcional: aqui você pode mostrar um "enviando..." e permitir o envio real
+          clearError();
+          // o form segue normalmente para action se válido
+        });
+
+        // limpar mensagem ao digitar
+        email.addEventListener('input', () => {
+          if (email.checkValidity()) clearError();
+        });
+      })();
+    </script>
+  </body>
+</html>

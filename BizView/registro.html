@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Biz View - Cadastro</title>
+    <link rel="stylesheet" href="registro.css" />
+  </head>
+
+  <body>
+    <main class="cadastro-container" aria-labelledby="titulo-cadastro">
+      <header class="logo-area">
+        <img
+          src="https://c.animaapp.com/PYvsZfcI/img/icons8-column-graph-78-1@2x.png"
+          alt="Logo Biz View"
+          class="logo"
+        />
+        <h1 id="titulo-cadastro" class="title">Biz View</h1>
+      </header>
+
+      <form id="signup" class="signup-form" action="criar_entrar.html" method="get" novalidate>
+        <!-- Usuário com mínimo de caracteres -->
+        <div class="input-group">
+          <input
+            id="username"
+            type="text"
+            name="username"
+            placeholder="Usuário"
+            required
+            minlength="4"
+            autocomplete="username"
+            inputmode="text"
+            aria-describedby="username-err"
+            aria-required="true"
+          />
+          <span id="username-err" class="error-msg" role="alert">O nome de usuário deve ter pelo menos 4 caracteres.</span>
+        </div>
+
+        <div class="input-group">
+          <input
+            id="email"
+            type="email"
+            name="email"
+            placeholder="E-mail"
+            required
+            autocomplete="email"
+            inputmode="email"
+            aria-describedby="email-err"
+            aria-required="true"
+          />
+          <span id="email-err" class="error-msg" role="alert">Por favor, insira um e-mail válido.</span>
+        </div>
+
+        <div class="input-group">
+          <input
+            id="password"
+            type="password"
+            name="password"
+            placeholder="Senha"
+            required
+            minlength="6"
+            autocomplete="new-password"
+            aria-describedby="password-err"
+            aria-required="true"
+          />
+          <span id="password-err" class="error-msg" role="alert">A senha deve ter pelo menos 6 caracteres.</span>
+        </div>
+
+        <button id="submit-btn" type="submit" class="btn-primary" aria-label="Criar conta">Criar conta</button>
+
+        <button type="button" class="btn-social google" aria-label="Criar com Google">
+          <img
+            src="https://c.animaapp.com/PYvsZfcI/img/icons8-google-48-1@2x.png"
+            alt=""
+            aria-hidden="true"
+          />
+          Criar com Google
+        </button>
+
+        <button type="button" class="btn-social apple" aria-label="Criar com Apple">
+          <img
+            src="https://c.animaapp.com/PYvsZfcI/img/icons8-apple-30-1@2x.png"
+            alt=""
+            aria-hidden="true"
+          />
+          Criar com Apple
+        </button>
+      </form>
+
+      <a href="login.html" class="link-login">Já tem uma conta?</a>
+    </main>
+
+    <script>
+      // Client-side enhancement: impede submit se inválido e mostra mensagens
+      (function () {
+        const form = document.getElementById('signup');
+        const username = document.getElementById('username');
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+
+        const usernameErr = document.getElementById('username-err');
+        const emailErr = document.getElementById('email-err');
+        const passwordErr = document.getElementById('password-err');
+
+        // util: mostra/oculta mensagem de erro
+        function showErr(el, msgEl, show) {
+          if (show) {
+            el.classList.add('invalid');
+            msgEl.style.display = 'block';
+          } else {
+            el.classList.remove('invalid');
+            msgEl.style.display = 'none';
+          }
+        }
+
+        // validações independentes
+        function validateUsername() {
+          const ok = username.value.trim().length >= 4;
+          showErr(username, usernameErr, !ok);
+          return ok;
+        }
+        function validateEmail() {
+          // usa validação nativa + regex adicional simples
+          const value = email.value.trim();
+          const ok = email.checkValidity();
+          showErr(email, emailErr, !ok);
+          return ok;
+        }
+        function validatePassword() {
+          const ok = password.value.length >= 6;
+          showErr(password, passwordErr, !ok);
+          return ok;
+        }
+
+        // valida enquanto digita / perde foco
+        username.addEventListener('input', validateUsername);
+        username.addEventListener('blur', validateUsername);
+        email.addEventListener('input', validateEmail);
+        email.addEventListener('blur', validateEmail);
+        password.addEventListener('input', validatePassword);
+        password.addEventListener('blur', validatePassword);
+
+        // submit: impede e foca no primeiro inválido
+        form.addEventListener('submit', function (e) {
+          const v1 = validateUsername();
+          const v2 = validateEmail();
+          const v3 = validatePassword();
+
+          if (!(v1 && v2 && v3)) {
+            e.preventDefault();
+            // foco no primeiro inválido
+            if (!v1) username.focus();
+            else if (!v2) email.focus();
+            else password.focus();
+            return false;
+          }
+
+          // formulário válido: permite envio (navega para criar_entrar.html conforme action)
+          return true;
+        });
+
+        // melhora visual: esconder msgs inicialmente
+        usernameErr.style.display = 'none';
+        emailErr.style.display = 'none';
+        passwordErr.style.display = 'none';
+      })();
+    </script>
+  </body>
+</html>

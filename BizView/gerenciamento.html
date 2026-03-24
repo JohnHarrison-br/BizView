@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gerenciar Dados • Biz View</title>
+  <link rel="stylesheet" href="gerenciamento.css" />
+</head>
+<body>
+  <main class="page">
+    <section class="card">
+      <header class="card-header">
+        <a href="configuracao.html" class="back" aria-label="Voltar">&lt;&nbsp;&nbsp;Voltar</a>
+
+        <div class="brand">
+          <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="#2e6fe8" d="M3 18h3V7H3v11zm5 0h3V3H8v15zm5 0h3v-9h-3v9zm5 0h3v-4h-3v4z"/>
+          </svg>
+          <h1>Gerenciar Dados</h1>
+        </div>
+
+      </header>
+
+      <form id="formGerenciar" class="form" novalidate>
+        <label class="field">
+          <span class="label">Receita Mensal</span>
+          <input
+            type="number"
+            id="receita"
+            name="receita"
+            class="input"
+            placeholder="R$ 0,00"
+            step="0.01"
+            min="0"
+            required
+            inputmode="decimal"
+            aria-label="Receita Mensal" />
+        </label>
+
+        <label class="field">
+          <span class="label">Gastos Mensais</span>
+          <input
+            type="number"
+            id="gastos"
+            name="gastos"
+            class="input"
+            placeholder="R$ 0,00"
+            step="0.01"
+            min="0"
+            required
+            inputmode="decimal"
+            aria-label="Gastos Mensais" />
+        </label>
+
+        <label class="field">
+          <span class="label">Lucro Líquido (automático)</span>
+          <input
+            type="text"
+            id="lucro"
+            name="lucro"
+            class="input readonly"
+            placeholder="R$ 0,00"
+            readonly
+            aria-label="Lucro Líquido" />
+        </label>
+
+        <label class="field">
+          <span class="label">Meta</span>
+          <input
+            type="number"
+            id="meta"
+            name="meta"
+            class="input"
+            placeholder="R$ 0,00"
+            step="0.01"
+            min="0"
+            required
+            inputmode="decimal"
+            aria-label="Meta" />
+        </label>
+
+        <div class="actions">
+          <button id="salvarBtn" type="submit" class="btn" disabled aria-disabled="true">
+            Salvar
+
+          </button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      const receitaEl = document.getElementById('receita');
+      const gastosEl = document.getElementById('gastos');
+      const lucroEl = document.getElementById('lucro');
+      const metaEl = document.getElementById('meta');
+      const salvarBtn = document.getElementById('salvarBtn');
+      const form = document.getElementById('formGerenciar');
+
+      function parseNumber(v) {
+        if (v === '' || v === null || v === undefined) return NaN;
+        return Number(v);
+      }
+
+      function formatBRL(value) {
+        if (isNaN(value)) return 'R$ 0,00';
+        return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
+      }
+
+      function updateLucro() {
+        const r = parseNumber(receitaEl.value);
+        const g = parseNumber(gastosEl.value);
+        if (!isNaN(r) && !isNaN(g)) {
+          const lucro = r - g;
+          lucroEl.value = formatBRL(lucro);
+        } else {
+          lucroEl.value = '';
+        }
+      }
+
+      function validateForm() {
+        // requisitos: receita, gastos e meta são obrigatórios e >= 0
+        const r = parseNumber(receitaEl.value);
+        const g = parseNumber(gastosEl.value);
+        const m = parseNumber(metaEl.value);
+
+        const ok = !isNaN(r) && r >= 0 && !isNaN(g) && g >= 0 && !isNaN(m) && m >= 0;
+        salvarBtn.disabled = !ok;
+        salvarBtn.setAttribute('aria-disabled', String(!ok));
+      }
+
+      // listeners
+      [receitaEl, gastosEl, metaEl].forEach((el) => {
+        el.addEventListener('input', () => {
+          updateLucro();
+          validateForm();
+        });
+        // improve mobile UX: remove minus sign quickly if typed
+        el.addEventListener('keydown', (e) => {
+          if (e.key === '-' ) e.preventDefault();
+        });
+      });
+
+      // initial run
+      updateLucro();
+      validateForm();
+
+form.addEventListener('submit', function (ev) {
+  ev.preventDefault();
+  if (salvarBtn.disabled) return;
+
+  const payload = {
+    receita: Number(receitaEl.value) || 0,
+    gastos: Number(gastosEl.value) || 0,
+    lucro: lucroEl.value,
+    meta: Number(metaEl.value) || 0
+  };
+
+  salvarBtn.textContent = 'Salvando...';
+  salvarBtn.disabled = true;
+
+  setTimeout(() => {
+    // redireciona automaticamente após salvar
+    window.location.href = "configuracao.html";
+  }, 700);
+});
+
+    })();
+  </script>
+</body>
+</html>

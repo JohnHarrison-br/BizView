@@ -1,0 +1,136 @@
+/* globals.css - shared styles (mobile-first) */
+
+:root{
+  --bg-1: #5393f1;
+  --bg-2: #9bc9ff;
+  --card-bg: #ffffff;
+  --muted: #909090;
+  --danger: #e74c3c;
+  --success: #2ecc71;
+  --shadow-1: 0 10px 30px rgba(14,45,78,0.10);
+  --radius-lg: 18px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+  --gap: 16px;
+  --max-width: 420px;
+  --text: #0f0f0f;
+  --soft: #f5f7fb;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial;
+  background: linear-gradient(135deg,var(--bg-1),var(--bg-2));
+  padding:16px;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* Card container used by most screens */
+.app-card{
+  background: var(--card-bg);
+  width:100%;
+  max-width: var(--max-width);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow-1);
+  display:flex;
+  flex-direction:column;
+  gap: var(--gap);
+  animation: fadeIn .5s ease;
+  position: relative;
+}
+
+/* Header (logo + title) */
+.header-inline{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+.header-inline .logo{
+  width:56px;height:56px;object-fit:cover;border-radius:8px;
+  box-shadow:0 8px 18px rgba(83,147,241,0.12);
+}
+
+/* Title */
+.h1{
+  font-size:28px;font-weight:700;color:var(--text);margin:0;
+}
+
+/* Form basics */
+.form{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.input{
+  height:52px;padding:12px 14px;border-radius:12px;border:2px solid transparent;
+  background:var(--soft);font-size:16px;color:var(--text);
+}
+.input::placeholder{color:#9aa0a6}
+.input:focus{outline:none;border-color:var(--bg-1);background:#fff;box-shadow:0 0 8px rgba(83,147,241,0.14)}
+
+/* error / valid */
+.input.invalid{border-color:var(--danger)!important;box-shadow:0 0 6px rgba(231,76,60,0.12)!important}
+.input.valid{border-color:var(--success);box-shadow:0 0 6px rgba(46,204,113,0.10)}
+.error-msg{color:var(--danger);font-size:13px;display:none;margin:0}
+
+/* Buttons */
+.btn{
+  height:56px;border-radius:14px;border:none;cursor:pointer;font-weight:600;
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+}
+.btn-primary{
+  background:linear-gradient(90deg,var(--bg-1),#2e6fe8);color:#fff;font-size:18px;
+  box-shadow:0 8px 18px rgba(83,147,241,0.18);
+}
+.btn-ghost{background:#f0f0f0;color:var(--text);height:48px;border-radius:12px}
+
+/* Bottom navigation reusable */
+.bottom-nav{
+  position:fixed;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:18px;
+  display:flex;
+  gap:14px;
+  z-index:50;
+  width:calc(var(--max-width));
+  max-width: calc(var(--max-width));
+  padding:0 18px;
+  justify-content:space-between;
+  pointer-events:none; /* let individual anchors handle clicks */
+}
+.bottom-nav .nav-item{
+  pointer-events:auto;
+  width:64px;height:64px;border-radius:12px;background:transparent;display:flex;
+  align-items:center;justify-content:center;box-shadow:0 10px 20px rgba(14,45,78,0.06);
+}
+
+/* Card list / rows (team/settings) */
+.list-row{
+  display:flex;align-items:center;gap:12px;padding:18px;border-radius:12px;background:#fff;
+  box-shadow:0 6px 14px rgba(14,45,78,0.04);
+}
+.list-row .avatar{width:64px;height:64px;border-radius:32px;background:linear-gradient(180deg,var(--bg-1),#2e6fe8);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+
+/* Small utilities */
+.kicker{color:var(--bg-1);font-weight:700}
+.muted{color:#909090}
+.row{display:flex;align-items:center;gap:12px}
+.center{display:flex;align-items:center;justify-content:center}
+
+/* Responsive tweaks */
+@media(min-width:600px){
+  .h1{font-size:34px}
+  .app-card{padding:28px;border-radius:20px}
+}
+@media(min-width:992px){
+  .app-card{max-width:420px;padding:34px}
+  .h1{font-size:40px}
+}

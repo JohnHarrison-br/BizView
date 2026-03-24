@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sobre a Empresa • Biz View</title>
+  <link rel="stylesheet" href="sobre.css" />
+</head>
+<body>
+  <main class="page">
+    <section class="card" role="region" aria-labelledby="titulo-pagina">
+      <header class="card-header">
+        <a href="configuracao.html" class="back" aria-label="Voltar">&lt;&nbsp;&nbsp;Voltar</a>
+
+        <div class="title-wrap">
+          <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="#2e6fe8" d="M3 18h3V7H3v11zm5 0h3V3H8v15zm5 0h3v-9h-3v9zm5 0h3v-4h-3v4z"/>
+          </svg>
+          <h1 id="titulo-pagina">Informações da empresa</h1>
+        </div>
+      </header>
+
+      <section class="card-content" aria-label="Dados e plano da empresa">
+        <dl class="info-list" aria-label="Dados da empresa">
+          <div class="info-row">
+            <dt class="label">Nome da empresa</dt>
+            <dd class="value">DashCorp</dd>
+          </div>
+
+          <div class="info-row">
+            <dt class="label">CNPJ</dt>
+            <dd class="value">12.345.678/0001-90</dd>
+          </div>
+
+          <div class="info-row">
+            <dt class="label">Endereço</dt>
+            <dd class="value">Rua Exemplo, 123 — Patos/PB</dd>
+          </div>
+
+          <div class="info-row">
+            <dt class="label">Setor</dt>
+            <dd class="value">Tecnologia</dd>
+          </div>
+        </dl>
+
+        <section class="plan-section" aria-labelledby="plano-title">
+          <h2 id="plano-title" class="plan-title">Plano</h2>
+
+          <div class="plan-row">
+            <span class="plan-label">Plano atual:</span>
+            <span class="plan-value">Gratuito</span>
+          </div>
+
+          <div class="plan-actions">
+            <button id="alterarPlano" class="btn primary" type="button">Alterar Plano</button>
+
+<script>
+  document.getElementById('alterarPlano').addEventListener('click', () => {
+    window.location.href = 'planos.html'; // nome do arquivo desta tela
+  });
+</script>
+
+          </div>
+        </section>
+      </section>
+    </section>
+  </main>
+
+  <script>
+  </script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Biz View - Login</title>
+    <link rel="stylesheet" href="login.css" />
+  </head>
+
+  <body>
+    <main class="login-container" aria-labelledby="titulo-login">
+      <header class="logo-area">
+        <img
+          src="https://c.animaapp.com/cmKqbLPQ/img/icons8-column-graph-78-1@2x.png"
+          alt="Logo Biz View"
+          class="logo"
+        />
+        <h1 id="titulo-login" class="title">Biz View</h1>
+      </header>
+
+      <form id="loginForm" class="login-form" action="criar_entrar.html" method="get" novalidate>
+        <!-- E-mail -->
+        <div class="input-group">
+          <input
+            id="email"
+            type="email"
+            name="email"
+            placeholder="E-mail"
+            required
+            autocomplete="email"
+            inputmode="email"
+            aria-describedby="email-err"
+            aria-required="true"
+          />
+          <span id="email-err" class="error-msg" role="alert">Por favor, insira um e-mail válido.</span>
+        </div>
+
+        <!-- Senha (mínimo 6) -->
+        <div class="input-group">
+          <input
+            id="password"
+            type="password"
+            name="password"
+            placeholder="Senha"
+            required
+            minlength="6"
+            autocomplete="current-password"
+            aria-describedby="password-err"
+            aria-required="true"
+          />
+          <span id="password-err" class="error-msg" role="alert">A senha deve ter pelo menos 6 caracteres.</span>
+        </div>
+
+        <button id="btn-submit" type="submit" class="btn-primary" aria-label="Entrar">Entrar</button>
+
+        <button type="button" class="btn-social google" aria-label="Entrar com Google">
+          <img src="https://c.animaapp.com/cmKqbLPQ/img/icons8-google-48-1@2x.png" alt="" aria-hidden="true" />
+          Entrar com Google
+        </button>
+
+        <button type="button" class="btn-social apple" aria-label="Entrar com Apple">
+          <img src="https://c.animaapp.com/cmKqbLPQ/img/icons8-apple-30-1@2x.png" alt="" aria-hidden="true" />
+          Entrar com Apple
+        </button>
+      </form>
+
+      <nav class="auth-links" aria-label="Links de autenticação">
+        <a href="redefinir.html">Esqueceu a senha?</a>
+        <a href="registro.html">Criar conta</a>
+      </nav>
+    </main>
+
+    <script>
+      (function () {
+        const form = document.getElementById('loginForm');
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+        const emailErr = document.getElementById('email-err');
+        const passwordErr = document.getElementById('password-err');
+
+        function showErr(el, msgEl, show) {
+          if (show) {
+            el.classList.add('invalid');
+            msgEl.style.display = 'block';
+          } else {
+            el.classList.remove('invalid');
+            msgEl.style.display = 'none';
+          }
+        }
+
+        function validateEmail() {
+          const ok = email.checkValidity();
+          showErr(email, emailErr, !ok);
+          return ok;
+        }
+
+        function validatePassword() {
+          const ok = password.value.length >= 6;
+          showErr(password, passwordErr, !ok);
+          return ok;
+        }
+
+        email.addEventListener('input', validateEmail);
+        email.addEventListener('blur', validateEmail);
+        password.addEventListener('input', validatePassword);
+        password.addEventListener('blur', validatePassword);
+
+        form.addEventListener('submit', function (e) {
+          const vEmail = validateEmail();
+          const vPass = validatePassword();
+
+          if (!(vEmail && vPass)) {
+            e.preventDefault();
+            if (!vEmail) email.focus();
+            else password.focus();
+            return false;
+          }
+
+          // Form válido -> permite navegação para criar_entrar.html (action do form)
+          return true;
+        });
+
+        // esconder msgs inicialmente
+        emailErr.style.display = 'none';
+        passwordErr.style.display = 'none';
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Biz View - Criar Empresa</title>
+  <link rel="stylesheet" href="criar.css" />
+</head>
+<body>
+  <main class="create-container">
+    <nav class="top-nav">
+      <a href="criar_entrar.html" class="back-link" aria-label="Voltar">← Voltar</a>
+    </nav>
+
+    <section class="content">
+      <h1 class="heading">Cadastro da Empresa</h1>
+      <p class="lead">Preencha os dados abaixo para criar sua empresa.</p>
+
+      <form id="formEmpresa" class="company-form" action="perfil.html" method="get" novalidate>
+        <div class="input-group">
+          <label for="nomeEmpresa" class="sr-only">Nome da empresa</label>
+          <input id="nomeEmpresa" name="nomeEmpresa" type="text" placeholder="Nome da empresa" required />
+          <span class="error-msg">O nome da empresa é obrigatório.</span>
+        </div>
+
+        <div class="input-group">
+          <label for="cnpj" class="sr-only">CNPJ</label>
+          <input
+            id="cnpj"
+            name="cnpj"
+            type="text"
+            inputmode="numeric"
+            maxlength="18"
+            placeholder="CNPJ (somente números ou 00.000.000/0000-00)"
+            required
+            title="Digite o CNPJ com 14 dígitos. Pode usar formatação."
+          />
+          <!-- mensagem com aria-live para leitores de tela -->
+          <span id="erroCnpj" class="error-msg" role="alert" aria-live="polite">CNPJ inválido. Ex: 12.345.678/0001-90</span>
+        </div>
+
+        <div class="input-group">
+          <label for="descricao" class="sr-only">Descrição da empresa</label>
+          <textarea id="descricao" name="descricao" placeholder="Descrição da empresa" rows="4" required></textarea>
+          <span class="error-msg">A descrição é obrigatória.</span>
+        </div>
+
+        <button type="submit" class="btn-primary">Criar empresa</button>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    // Validação real de CNPJ (mantive a função que você já tinha, adaptada)
+    function validarCNPJ(cnpj) {
+      if (!cnpj) return false;
+      cnpj = cnpj.replace(/[^\d]+/g, "");
+      if (cnpj.length !== 14) return false;
+      if (/^(\d)\1{13}$/.test(cnpj)) return false;
+
+      let tamanho = cnpj.length - 2;
+      let numeros = cnpj.substring(0, tamanho);
+      let digitos = cnpj.substring(tamanho);
+      let soma = 0;
+      let pos = tamanho - 7;
+
+      for (let i = tamanho; i >= 1; i--) {
+        soma += numeros.charAt(tamanho - i) * pos--;
+        if (pos < 2) pos = 9;
+      }
+
+      let resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
+      if (resultado != digitos.charAt(0)) return false;
+
+      tamanho = tamanho + 1;
+      numeros = cnpj.substring(0, tamanho);
+      soma = 0;
+      pos = tamanho - 7;
+      for (let i = tamanho; i >= 1; i--) {
+        soma += numeros.charAt(tamanho - i) * pos--;
+        if (pos < 2) pos = 9;
+      }
+      resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
+      if (resultado != digitos.charAt(1)) return false;
+
+      return true;
+    }
+
+    const form = document.getElementById("formEmpresa");
+    const cnpjInput = document.getElementById("cnpj");
+    const erroCnpj = document.getElementById("erroCnpj");
+
+    form.addEventListener("submit", function (e) {
+      // Força as validações HTML nativas (nome/descrição) primeiro
+      if (!form.reportValidity()) {
+        e.preventDefault();
+        return;
+      }
+
+      const cnpj = cnpjInput.value.trim();
+      if (!validarCNPJ(cnpj)) {
+        e.preventDefault();
+        erroCnpj.style.display = "block";
+        cnpjInput.classList.add("has-error");
+        cnpjInput.focus();
+      } else {
+        erroCnpj.style.display = "none";
+        cnpjInput.classList.remove("has-error");
+      }
+    });
+
+    // esconder erro quando usuário digitar algo novo
+    cnpjInput.addEventListener("input", () => {
+      if (erroCnpj) erroCnpj.style.display = "none";
+      cnpjInput.classList.remove("has-error");
+    });
+  </script>
+</body>
+</html>

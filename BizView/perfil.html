@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Perfil • Biz View</title>
+  <link rel="stylesheet" href="perfil.css" />
+</head>
+<body>
+  <main class="profile-container">
+    <nav class="top-nav" aria-label="Navegação principal">
+      <a href="criar_entrar.html" class="back-link" aria-label="Voltar">← Voltar</a>
+    </nav>
+
+    <header class="profile-header">
+      <div class="avatar-wrap">
+        <img src="imagem/fotomassa.jpg" alt="Foto de perfil" class="avatar" />
+        <!-- input de upload opcional (visível/funcional se quiser) -->
+        <label for="avatar-upload" class="avatar-change">Alterar</label>
+        <input id="avatar-upload" type="file" accept="image/*" class="sr-only" />
+      </div>
+
+      <h1 class="title">Perfil</h1>
+      <p class="subtitle">Atualize seus dados pessoais</p>
+    </header>
+
+    <!-- AQUI: form único já apontando para o dashboard -->
+<form
+  class="profile-form"
+  action="dashboard.html"
+  method="get"
+  aria-label="Formulário do perfil"
+>
+    >
+      <div class="input-group">
+        <label for="nome" class="sr-only">Nome completo</label>
+        <input
+          id="nome"
+          name="nome"
+          type="text"
+          placeholder="Nome completo"
+          value="Adam Rafael Silvia"
+          required
+        />
+        <span class="error-msg">O nome é obrigatório.</span>
+      </div>
+
+      <div class="input-row">
+        <div class="input-group small">
+          <label for="data-nascimento" class="sr-only">Data de nascimento</label>
+          <input
+            id="data-nascimento"
+            name="data-nascimento"
+            type="date"
+            required
+          />
+          <span class="error-msg">Informe a data de nascimento.</span>
+        </div>
+
+        <div class="input-group small">
+          <label for="genero" class="sr-only">Gênero</label>
+          <select id="genero" name="genero" required>
+            <option value="">Selecione</option>
+            <option value="masculino" selected>Masculino</option>
+            <option value="feminino">Feminino</option>
+            <option value="outro">Outro</option>
+            <option value="prefiro-nao-dizer">Prefiro não dizer</option>
+          </select>
+          <span class="error-msg">Selecione uma opção.</span>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="bio" class="sr-only">Bio</label>
+        <textarea id="bio" name="bio" rows="4" placeholder="Pequena bio (opcional)"></textarea>
+      </div>
+
+      <button type="submit" class="btn-primary">Salvar</button>
+    </form>
+  </main>
+</body>
+</html>

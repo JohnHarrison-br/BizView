@@ -1,0 +1,127 @@
+/* relatorios.css — mobile-first */
+
+* { box-sizing: border-box; }
+html,body { height:100%; margin:0; }
+body {
+  font-family:"Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  background: linear-gradient(135deg,#5393f1,#9bc9ff);
+  display:flex; align-items:center; justify-content:center; padding:18px;
+}
+
+/* container/card */
+.reports-page { width:100%; max-width:420px; }
+.card {
+  background:#fff;
+  border-radius:16px;
+  padding:16px;
+  box-shadow:0 18px 40px rgba(0,0,0,0.12);
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  min-height:520px;
+
+  /* animação suave ao carregar (igual nas outras telas) */
+  animation: fadeIn .55s ease;
+}
+
+/* header */
+.card-header { display:flex; align-items:center; gap:12px; }
+.brand-image { width:44px; height:44px; border-radius:8px; object-fit:cover; }
+.card-header h1 { margin:0; color:#2e6fe8; font-size:20px; font-weight:700; }
+
+/* period selector */
+.period { display:flex; gap:10px; align-items:center; margin-top:4px; border:none; padding:0; }
+.period legend { position:absolute; left:-9999px; } /* hidden legend for a11y */
+
+.period-option {
+  display:flex; align-items:center; gap:8px; cursor:pointer;
+  user-select:none; padding:8px 10px; border-radius:10px;
+  transition: background .12s;
+}
+.period-option input { position:absolute; opacity:0; pointer-events:none; }
+.fake-radio {
+  width:36px; height:36px; border-radius:10px; background:#e9eefb;
+  display:inline-block; flex-shrink:0; box-shadow: inset 0 -6px 12px rgba(0,0,0,0.03);
+}
+.period-option input:checked + .fake-radio { background: linear-gradient(180deg,#5393f1,#2e6fe8); box-shadow: 0 6px 14px rgba(46,76,122,0.12); }
+.label-text { font-weight:600; color:#0f0f0f; }
+
+/* metrics */
+.metrics { display:flex; flex-direction:column; gap:12px; margin-top:6px; }
+
+.metric {
+  display:flex; align-items:center; justify-content:space-between;
+  background: #fafcff; border-radius:12px; padding:14px;
+  box-shadow: 0 10px 20px rgba(46,76,122,0.04);
+}
+.metric-left { display:flex; flex-direction:column; gap:6px; max-width:60%; }
+.metric-title { margin:0; font-size:16px; color:#0f0f0f; font-weight:600; }
+.metric-value { margin:0; font-size:20px; font-weight:700; color:#0f0f0f; }
+.metric-value.small { font-weight:500; font-size:14px; color:#616161; }
+
+/* chart placeholder */
+.chart-icon { width:64px; height:64px; border-radius:8px; }
+
+/* bottom nav inside card */
+.card-nav {
+  display:flex; justify-content:space-between; gap:12px; margin-top:auto; padding-top:6px;
+  align-items:center;
+}
+
+.nav-item {
+  width:64px; height:64px; border-radius:12px; display:flex; align-items:center; justify-content:center;
+  text-decoration:none; color:#fff; background: linear-gradient(180deg,#5393f1,#2e6fe8);
+  box-shadow: 0 14px 30px rgba(46,76,122,0.12);
+}
+.nav-item svg { width:28px; height:28px; }
+.nav-item[aria-current="page"], .nav-item.active {
+  background: linear-gradient(180deg,#cfcfcf,#bfbfbf); box-shadow: 0 12px 26px rgba(0,0,0,0.12);
+}
+
+/* focus styles */
+a:focus-visible, .period-option:focus-visible, .nav-item:focus-visible {
+  outline: 3px solid rgba(83,147,241,0.16); outline-offset:4px; border-radius:12px;
+}
+
+/* fadeIn keyframes (shared) */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* responsive tweaks */
+@media (max-width:360px) {
+  .card { padding:12px; min-height:480px; }
+  .chart-icon { width:56px; height:56px; }
+  .nav-item { width:60px; height:60px; }
+}
+
+@media (min-width:600px) {
+  .card { padding:22px; min-height:560px; border-radius:18px; }
+  .metric { padding:18px; }
+  .chart-icon { width:80px; height:80px; }
+  .nav-item { width:72px; height:72px; }
+}
+
+/* deixa as "bolinhas" de período mais vivas quando selecionadas */
+.period-option input:checked + .fake-radio {
+  background: linear-gradient(180deg,#5393f1,#2e6fe8);
+  box-shadow: 0 6px 14px rgba(46,76,122,0.12);
+}
+.period-option input:checked + .fake-radio + .label-text {
+  color:#2e6fe8;
+}
+
+/* ícones/gráficos dos cards */
+.chart-icon {
+  width:64px;
+  height:64px;
+  border-radius:12px;
+}
+
+#chart-lucro .lucro-bar,
+#chart-growth .growth-bar {
+  fill:#2e6fe8;
+  opacity:0.9;
+}
+

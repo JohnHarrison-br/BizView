@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Relatórios • Biz View</title>
+  <link rel="stylesheet" href="relatorio.css" />
+</head>
+<body>
+  <main class="reports-page">
+
+    <section class="card">
+      <header class="card-header">
+        <div class="brand">
+          <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="#2e6fe8" d="M3 18h3V7H3v11zm5 0h3V3H8v15zm5 0h3v-9h-3v9zm5 0h3v-4h-3v4z"/>
+          </svg>
+          <h1>Relatórios</h1>
+        </div>
+      </header>
+
+      <!-- período -->
+      <fieldset class="period" aria-label="Escolher período">
+        <legend>Período</legend>
+
+        <label class="period-option">
+          <input type="radio" name="period" value="1m" />
+          <span class="fake-radio" aria-hidden="true"></span>
+          <span class="label-text">1 mês</span>
+        </label>
+
+        <label class="period-option">
+          <input type="radio" name="period" value="6m" checked />
+          <span class="fake-radio" aria-hidden="true"></span>
+          <span class="label-text">6 meses</span>
+        </label>
+
+        <label class="period-option">
+          <input type="radio" name="period" value="12m" />
+          <span class="fake-radio" aria-hidden="true"></span>
+          <span class="label-text">12 meses</span>
+        </label>
+      </fieldset>
+
+      <!-- métricas -->
+      <div class="metrics">
+        <!-- LUCRO -->
+        <article class="metric">
+          <div class="metric-left">
+            <h2 class="metric-title">Lucro Acumulado</h2>
+            <p class="metric-value" id="lucro-valor">R$ 45.000</p>
+          </div>
+
+          <!-- ícone/gráfico: barras -->
+          <div class="metric-chart" aria-hidden="true">
+            <svg id="chart-lucro" viewBox="0 0 80 80" class="chart-icon">
+              <rect x="4" y="6" width="72" height="68" rx="10" fill="#f3f7ff"/>
+              <rect class="lucro-bar" x="18" y="40" width="8" height="26" rx="3" />
+              <rect class="lucro-bar" x="36" y="32" width="8" height="34" rx="3" />
+              <rect class="lucro-bar" x="54" y="24" width="8" height="42" rx="3" />
+            </svg>
+          </div>
+        </article>
+
+        <!-- GASTOS -->
+        <article class="metric">
+          <div class="metric-left">
+            <h2 class="metric-title">Gastos por categoria</h2>
+            <p class="metric-value" id="gastos-valor">R$ 14.000</p>
+          </div>
+
+          <!-- ícone/gráfico: pizza -->
+          <div class="metric-chart" aria-hidden="true">
+            <svg id="chart-gastos" viewBox="0 0 80 80" class="chart-icon">
+              <circle cx="40" cy="40" r="26" fill="#f3f7ff"/>
+              <circle cx="40" cy="40" r="20"
+                      fill="none"
+                      stroke="#2e6fe8"
+                      stroke-width="8"
+                      stroke-dasharray="90 200"
+                      stroke-linecap="round"
+                      transform="rotate(-90 40 40)"/>
+              <circle cx="40" cy="40" r="20"
+                      fill="none"
+                      stroke="#9bc9ff"
+                      stroke-width="8"
+                      stroke-dasharray="50 200"
+                      stroke-linecap="round"
+                      transform="rotate(40 40 40)"/>
+            </svg>
+          </div>
+        </article>
+
+        <!-- CRESCIMENTO -->
+        <article class="metric">
+          <div class="metric-left">
+            <h2 class="metric-title">Crescimento percentual</h2>
+            <p class="metric-value small" id="growth-sub">Comparativo de períodos</p>
+          </div>
+
+          <!-- ícone/gráfico: barras de crescimento -->
+          <div class="metric-chart" aria-hidden="true">
+            <svg id="chart-growth" viewBox="0 0 80 80" class="chart-icon">
+              <rect x="4" y="10" width="72" height="60" rx="10" fill="#f3f7ff"/>
+              <rect class="growth-bar" x="22" y="44" width="6" height="18" rx="2" />
+              <rect class="growth-bar" x="36" y="36" width="6" height="26" rx="2" />
+              <rect class="growth-bar" x="50" y="28" width="6" height="34" rx="2" />
+            </svg>
+          </div>
+        </article>
+      </div>
+
+      <!-- navegação dentro do card -->
+      <nav class="card-nav" aria-label="Navegação principal">
+        <a class="nav-item" href="dashboard.html" aria-label="Dashboard">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M3 13h8V3H3v10zm10 8h8V3h-8v18zM3 21h8v-6H3v6zM13 13h8v-4h-8v4z"/></svg>
+        </a>
+
+        <a class="nav-item active" href="relatorio.html" aria-label="Relatórios" aria-current="page">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 8h14v-2H7v2zm0-4h14v-2H7v2zm0-6v2h14V7H7z"/></svg>
+        </a>
+
+        <a class="nav-item" href="equipe.html" aria-label="Equipe">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zM8 11c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm8 2c-2.33 0-7 1.17-7 3.5V20h14v-3.5c0-2.33-4.67-3.5-7-3.5zM8 13c-2.67 0-8 1.34-8 4v3h8v-3c0-1 .5-2 1.5-2.5.5-.25 1-.5 1.5-.5z"/></svg>
+        </a>
+
+        <a class="nav-item" href="configuracao.html" aria-label="Configurações">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M19.14 12.936c.036-.3.056-.604.056-.936s-.02-.636-.056-.936l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.6-.22l-2.39.96a7.07 7.07 0 0 0-1.62-.94l-.36-2.54a.5.5 0 0 0-.5-.42h-3.84a.5.5 0 0 0-.5.42l-.36 2.54c-.57.22-1.1.5-1.62.94l-2.39-.96a.5.5 0 0 0-.6.22L2.7 8.5a.5.5 0 0 0 .12.64l2.03 1.58c-.04.3-.06.62-.06.94s.02.64.06.94l-2.03 1.58a.5.5 0 0 0-.12.64l1.92 3.32c.13.22.4.3.6.22l2.39-.96c.5.45 1.05.82 1.62.94l.36 2.54c.05.28.28.42.5.42h3.84c.22 0 .45-.14.5-.42l.36-2.54c.57-.22 1.11-.5 1.62-.94l2.39.96c.2.08.47 0 .6-.22l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.58zM12 15.5A3.5 3.5 0 1 1 12 8.5a3.5 3.5 0 0 1 0 7z"/></svg>
+        </a>
+      </nav>
+    </section>
+
+  </main>
+
+  <script>
+    // --- Dados de exemplo para cada período (apenas front) ---
+    const periodData = {
+      "1m": {
+        lucro: "R$ 7.800",
+        gastos: "R$ 13.200",
+        growthSub: "Último mês vs anterior",
+        lucroBars: [16, 24, 30],
+        growthBars: [10, 18, 26]
+      },
+      "6m": {
+        lucro: "R$ 45.000",
+        gastos: "R$ 14.000",
+        growthSub: "Média dos últimos 6 meses",
+        lucroBars: [24, 34, 42],
+        growthBars: [14, 24, 34]
+      },
+      "12m": {
+        lucro: "R$ 82.000",
+        gastos: "R$ 28.500",
+        growthSub: "Ano atual vs anterior",
+        lucroBars: [20, 30, 52],
+        growthBars: [18, 30, 40]
+      }
+    };
+
+    function updateBars(svgId, heights) {
+      const svgHeight = 80;
+      const baseY = 66; // "chão" onde as barras encostam
+      const bars = document.querySelectorAll(`#${svgId} rect.${svgId === "chart-lucro" ? "lucro-bar" : "growth-bar"}`);
+
+      bars.forEach((bar, index) => {
+        const h = heights[index] || 10;
+        const y = baseY - h;
+        bar.setAttribute("height", h);
+        bar.setAttribute("y", y);
+        bar.setAttribute("fill", "#2e6fe8");
+        bar.setAttribute("opacity", 0.9 - index * 0.1);
+      });
+    }
+
+    function applyPeriod(periodKey) {
+      const data = periodData[periodKey];
+      if (!data) return;
+
+      // atualiza textos
+      document.getElementById("lucro-valor").textContent   = data.lucro;
+      document.getElementById("gastos-valor").textContent  = data.gastos;
+      document.getElementById("growth-sub").textContent    = data.growthSub;
+
+      // atualiza "gráficos"
+      updateBars("chart-lucro",  data.lucroBars);
+      updateBars("chart-growth", data.growthBars);
+    }
+
+    // listeners dos botões de período
+    document.querySelectorAll('input[name="period"]').forEach((input) => {
+      input.addEventListener("change", () => applyPeriod(input.value));
+    });
+
+    // estado inicial: 6 meses
+    applyPeriod("6m");
+  </script>
+</body>
+</html>

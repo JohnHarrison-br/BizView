@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Equipe • Biz View</title>
+  <link rel="stylesheet" href="equipe.css" />
+</head>
+<body>
+  <main class="team-page">
+
+    <!-- referência visual (sua imagem enviada) -->
+    <!-- Reference image: /mnt/data/48c24676-670c-419d-83f1-d35c2cbd4f14.png -->
+    <img src="/mnt/data/48c24676-670c-419d-83f1-d35c2cbd4f14.png"
+         alt="Referência visual - Equipe"
+         class="reference-mock" aria-hidden="true" />
+
+    <section class="card">
+      <header class="card-header">
+        <div class="brand">
+          <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path fill="#2e6fe8" d="M3 18h3V7H3v11zm5 0h3V3H8v15zm5 0h3v-9h-3v9zm5 0h3v-4h-3v4z"/>
+          </svg>
+          <h1>Equipe</h1>
+        </div>
+      </header>
+
+      <!-- team list -->
+      <ul class="members" aria-label="Lista de membros da equipe">
+        <li class="member" tabindex="0" role="button" aria-label="Johnny, Administrador">
+          <div class="avatar" aria-hidden="true">
+            <svg viewBox="0 0 24 24" class="avatar-icon" aria-hidden="true"><path fill="#fff" d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4.97 0-9 2.686-9 6v2h18v-2c0-3.314-4.03-6-9-6z"/></svg>
+          </div>
+          <div class="meta">
+            <div class="name">Johnny</div>
+            <div class="role">Administrador</div>
+          </div>
+        </li>
+
+        <li class="divider" aria-hidden="true"></li>
+
+        <li class="member" tabindex="0" role="button" aria-label="Cleber, Programador">
+          <div class="avatar"><svg viewBox="0 0 24 24" class="avatar-icon" aria-hidden="true"><path fill="#fff" d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4.97 0-9 2.686-9 6v2h18v-2c0-3.314-4.03-6-9-6z"/></svg></div>
+          <div class="meta">
+            <div class="name">Cleber</div>
+            <div class="role">Programador</div>
+          </div>
+        </li>
+
+        <li class="divider" aria-hidden="true"></li>
+
+        <li class="member" tabindex="0" role="button" aria-label="Laura, Designer">
+          <div class="avatar"><svg viewBox="0 0 24 24" class="avatar-icon" aria-hidden="true"><path fill="#fff" d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4.97 0-9 2.686-9 6v2h18v-2c0-3.314-4.03-6-9-6z"/></svg></div>
+          <div class="meta">
+            <div class="name">Laura</div>
+            <div class="role">Designer</div>
+          </div>
+        </li>
+      </ul>
+
+      <!-- bottom navigation inside the white card -->
+      <nav class="card-nav" aria-label="Navegação principal">
+        <a class="nav-item" href="dashboard.html" aria-label="Dashboard">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M3 13h8V3H3v10zm10 8h8V3h-8v18zM3 21h8v-6H3v6zM13 13h8v-4h-8v4z"/></svg>
+        </a>
+
+        <a class="nav-item" href="relatorio.html" aria-label="Relatórios">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 8h14v-2H7v2zm0-4h14v-2H7v2zm0-6v2h14V7H7z"/></svg>
+        </a>
+
+        <a class="nav-item active" href="equipe.html" aria-label="Equipe" aria-current="page">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zM8 11c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm8 2c-2.33 0-7 1.17-7 3.5V20h14v-3.5c0-2.33-4.67-3.5-7-3.5zM8 13c-2.67 0-8 1.34-8 4v3h8v-3c0-1 .5-2 1.5-2.5.5-.25 1-.5 1.5-.5z"/></svg>
+        </a>
+
+        <a class="nav-item" href="configuracao.html" aria-label="Configurações">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M19.14 12.936c.036-.3.056-.604.056-.936s-.02-.636-.056-.936l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.6-.22l-2.39.96a7.07 7.07 0 0 0-1.62-.94l-.36-2.54a.5.5 0 0 0-.5-.42h-3.84a.5.5 0 0 0-.5.42l-.36 2.54c-.57.22-1.1.5-1.62.94l-2.39-.96a.5.5 0 0 0-.6.22L2.7 8.5a.5.5 0 0 0 .12.64l2.03 1.58c-.04.3-.06.62-.06.94s.02.64.06.94l-2.03 1.58a.5.5 0 0 0-.12.64l1.92 3.32c.13.22.4.3.6.22l2.39-.96c.5.45 1.05.82 1.62.94l.36 2.54c.05.28.28.42.5.42h3.84c.22 0 .45-.14.5-.42l.36-2.54c.57-.22 1.11-.5 1.62-.94l2.39.96c.2.08.47 0 .6-.22l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.58zM12 15.5A3.5 3.5 0 1 1 12 8.5a3.5 3.5 0 0 1 0 7z"/></svg>
+        </a>
+      </nav>
+    </section>
+
+  </main>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Biz View - Entrar na Empresa</title>
+  <link rel="stylesheet" href="entrar.css" />
+</head>
+<body>
+  <main class="join-container">
+    <nav class="top-nav">
+      <a href="criar_entrar.html" class="back-link" aria-label="Voltar">← Voltar</a>
+    </nav>
+
+    <section class="content">
+      <h1 class="heading">Entrar em uma empresa</h1>
+      <p class="lead">Insira as informações necessárias</p>
+
+      <form id="joinForm" class="join-form" action="perfil.html" method="get" novalidate>
+        <div class="input-group">
+          <label for="codigo" class="sr-only">Código de convite</label>
+          <input id="codigo" name="codigo" type="text" placeholder="Código de convite" required minlength="4" />
+          <span class="error-msg">Informe o código de convite (mín. 4 caracteres).</span>
+        </div>
+
+        <div class="input-group">
+          <label for="cargo" class="sr-only">Função / Cargo (Opcional)</label>
+          <input id="cargo" name="cargo" type="text" placeholder="Função / Cargo (Opcional)" />
+        </div>
+
+        <button type="submit" class="btn-primary">Entrar na empresa</button>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    // Garante que o formulário só seja submetido quando válido
+    (function () {
+      const form = document.getElementById('joinForm');
+      if (!form) return;
+
+      form.addEventListener('submit', function (e) {
+        // reportValidity mostra mensagens nativas ou customizadas do HTML5 e retorna boolean
+        if (!form.reportValidity()) {
+          e.preventDefault();
+          // foca o primeiro elemento inválido para melhorar UX
+          const firstInvalid = form.querySelector(':invalid');
+          if (firstInvalid) firstInvalid.focus();
+          return;
+        }
+        // Se chegou aqui, o formulário é válido e pode submeter normalmente (navegar para perfil.html)
+        // Você pode adicionar lógica extra aqui (API call, loading state, etc.)
+      });
+    })();
+  </script>
+</body>
+</html>

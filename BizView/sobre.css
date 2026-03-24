@@ -1,0 +1,195 @@
+/* sobre_empresa.css — mobile-first, consistente com app */
+
+* { box-sizing: border-box; }
+html,body { height:100%; margin:0; }
+
+body {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+  background: linear-gradient(135deg,#5393f1,#9bc9ff);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+}
+
+.page {
+  width:100%;
+  max-width:440px;
+}
+
+/* Card branco central */
+.card {
+  background:#fff;
+  border-radius:16px;
+  padding:18px;
+  box-shadow:0 22px 48px rgba(0,0,0,0.14);
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  min-height:520px;
+
+  /* animação para entrar suave como nas outras telas */
+  animation: fadeIn .55s ease;
+}
+
+/* Header */
+.card-header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.back {
+  color:#333;
+  text-decoration:none;
+  font-weight:700;
+  font-size:16px;
+  white-space:nowrap;
+}
+.back:hover {
+  opacity:0.9;
+}
+
+.title-wrap {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex:1;
+  margin-left:8px;
+}
+
+.brand-icon { width:36px; height:36px; }
+
+.card-header h1 {
+  margin:0;
+  color:#2e6fe8;
+  font-weight:700;
+  font-size:18px;
+}
+
+/* Conteúdo */
+.card-content {
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  margin-top:6px;
+}
+
+/* Info list */
+.info-list {
+  margin:0;
+  padding:0;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.info-row {
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  padding:6px 0;
+  border-radius:8px;
+}
+.label {
+  color:#2e6fe8;
+  font-weight:700;
+  font-size:14px;
+  margin:0;
+}
+.value {
+  color:#0f0f0f;
+  font-weight:600;
+  font-size:16px;
+  margin:0;
+}
+
+/* Plan section */
+.plan-section {
+  margin-top:6px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.plan-title {
+  margin:0;
+  color:#2e6fe8;
+  font-weight:700;
+  font-size:18px;
+}
+
+.plan-row {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:8px 12px;
+  background:#fafafa;
+  border-radius:12px;
+  box-shadow: inset 0 -6px 12px rgba(0,0,0,0.03);
+}
+.plan-label {
+  color:#6b8bd6;
+  font-weight:700;
+  font-size:14px;
+}
+.plan-value {
+  color:#0f0f0f;
+  font-weight:700;
+  font-size:16px;
+}
+
+/* Actions */
+.plan-actions {
+  display:flex;
+  justify-content:center;
+  margin-top:4px;
+}
+
+.btn {
+  padding:12px 16px;
+  border-radius:12px;
+  border:none;
+  cursor:pointer;
+  font-size:16px;
+  font-weight:700;
+  min-width:160px;
+  box-shadow:0 12px 28px rgba(46,76,122,0.12);
+  transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+}
+
+.btn.primary {
+  background: linear-gradient(90deg,#5393f1,#2e6fe8);
+  color:#fff;
+}
+
+.btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow:0 16px 32px rgba(46,76,122,0.18);
+}
+
+/* Accessibility focus */
+.back:focus-visible,
+.btn:focus-visible,
+a:focus-visible {
+  outline: 3px solid rgba(83,147,241,0.18);
+  outline-offset:4px;
+  border-radius:8px;
+}
+
+/* animação compartilhada com o resto do app */
+@keyframes fadeIn {
+  from { opacity:0; transform: translateY(8px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+
+/* responsive tweaks */
+@media (max-width:360px) {
+  .card { padding:14px; min-height:480px; }
+  .card-header h1 { font-size:16px; }
+  .value { font-size:15px; }
+  .btn { font-size:15px; padding:10px 12px; min-width:140px; }
+}
+
+@media (min-width:600px) {
+  .card { padding:22px; min-height:560px; border-radius:18px; }
+}

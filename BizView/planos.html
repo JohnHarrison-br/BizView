@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Planos Disponíveis • Biz View</title>
+  <link rel="stylesheet" href="planos.css" />
+</head>
+<body>
+  <main class="plans-page">
+    <section class="card" aria-labelledby="titulo-planos">
+      <header class="card-header">
+        <a href="sobre.html" class="back-link" aria-label="Voltar para sobre a empresa">
+          ← Voltar
+        </a>
+
+        <h1 id="titulo-planos" class="title">Planos Disponíveis</h1>
+      </header>
+
+      <section class="current-plan">
+        <h2 class="section-label">Seu plano atual</h2>
+        <p class="current-plan-name">Gratuito</p>
+      </section>
+
+      <form class="plans-form" action="index.html" method="get" aria-label="Seleção de planos">
+        <h2 class="section-label">Planos disponíveis</h2>
+
+        <!-- Plano básico -->
+        <label class="plan-card">
+          <div class="plan-text">
+            <h3 class="plan-name">Plano básico</h3>
+            <p class="plan-desc">Para profissionais produtivos</p>
+            <p class="plan-price">R$ 19,90 / mês</p>
+          </div>
+          <div class="plan-radio-wrap">
+            <input
+              type="radio"
+              name="plan"
+              value="basic"
+              class="plan-radio"
+              aria-label="Selecionar plano básico"
+            />
+            <span class="custom-radio" aria-hidden="true"></span>
+          </div>
+        </label>
+
+        <!-- Plano empresarial -->
+        <label class="plan-card">
+          <div class="plan-text">
+            <h3 class="plan-name">Plano Empresarial</h3>
+            <p class="plan-desc">Para empresas com equipes</p>
+            <p class="plan-price">R$ 59,90 / mês</p>
+          </div>
+          <div class="plan-radio-wrap">
+            <input
+              type="radio"
+              name="plan"
+              value="business"
+              class="plan-radio"
+              checked
+              aria-label="Selecionar plano Empresarial"
+            />
+            <span class="custom-radio" aria-hidden="true"></span>
+          </div>
+        </label>
+
+        <!-- Plano empresarial plus -->
+        <label class="plan-card">
+          <div class="plan-text">
+            <h3 class="plan-name">Plano Empresarial Plus</h3>
+            <p class="plan-desc">Recursos avançados</p>
+            <p class="plan-price">R$ 99,90 / mês</p>
+          </div>
+          <div class="plan-radio-wrap">
+            <input
+              type="radio"
+              name="plan"
+              value="business-plus"
+              class="plan-radio"
+              aria-label="Selecionar plano Empresarial Plus"
+            />
+            <span class="custom-radio" aria-hidden="true"></span>
+          </div>
+        </label>
+
+        <div class="actions">
+          <button type="submit" class="btn-primary">
+            Assinar Plano
+          </button>
+        </div>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

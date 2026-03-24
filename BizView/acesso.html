@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Acesso e Segurança • Biz View</title>
+  <link rel="stylesheet" href="acesso.css" />
+</head>
+<body>
+  <main class="page">
+    <section class="card" role="region" aria-labelledby="titulo-pagina">
+      <header class="card-header">
+        <a href="javascript:history.back()" class="back" aria-label="Voltar">
+          &lt;&nbsp;&nbsp;Voltar
+        </a>
+
+        <div class="brand">
+          <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="#2e6fe8" d="M3 18h3V7H3v11zm5 0h3V3H8v15zm5 0h3v-9h-3v9zm5 0h3v-4h-3v4z"/>
+          </svg>
+          <h1 id="titulo-pagina">Acesso e Segurança</h1>
+        </div>
+      </header>
+
+      <section class="content" aria-label="Configurações de acesso e segurança">
+        <!-- Conta -->
+        <section class="section" aria-labelledby="sec-conta">
+          <h2 class="section-title" id="sec-conta">Conta</h2>
+          <div class="field readonly">
+            <span class="label">E-mail</span>
+            <a href="mailto:AdamSilvia@Empresa.com" class="value">
+              AdamSilvia@Empresa.com
+            </a>
+          </div>
+        </section>
+
+        <!-- Senha -->
+        <section class="section" aria-labelledby="sec-senha">
+          <h2 class="section-title" id="sec-senha">Senha</h2>
+          <div class="field readonly">
+            <span class="label">Senha</span>
+            <span class="value" aria-label="Senha oculta">**********</span>
+          </div>
+
+          <div class="actions">
+            <button class="btn primary" id="alterar-senha" type="button">
+              Alterar Senha
+            </button>
+          </div>
+        </section>
+
+        <!-- Vinculação -->
+        <section class="section" aria-labelledby="sec-vinculacao">
+          <h2 class="section-title" id="sec-vinculacao">Vinculação empresarial</h2>
+
+          <dl class="info-list">
+            <div class="info-row">
+              <dt class="dt">Empresa Atual:</dt>
+              <dd class="dd">DashCorp</dd>
+            </div>
+            <div class="info-row">
+              <dt class="dt">Cargo:</dt>
+              <dd class="dd">Administrador</dd>
+            </div>
+            <div class="info-row">
+              <dt class="dt">Código da empresa:</dt>
+              <dd class="dd">#Dash8739</dd>
+            </div>
+          </dl>
+
+          <div class="actions">
+            <button class="btn secondary" id="alterar-cargo" type="button">
+              Alterar cargo/empresa
+            </button>
+          </div>
+        </section>
+      </section>
+    </section>
+  </main>
+
+  <!-- Stubs de ação (você depois troca por modal/fluxo real) -->
+  <script>
+    document.getElementById('alterar-senha').addEventListener('click', function () {
+      alert('Abrir modal de alteração de senha (a implementar).');
+    });
+
+    document.getElementById('alterar-cargo').addEventListener('click', function () {
+      alert('Abrir fluxo de alteração de cargo/empresa (a implementar).');
+    });
+  </script>
+</body>
+</html>
